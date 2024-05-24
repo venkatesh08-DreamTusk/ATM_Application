@@ -2,7 +2,7 @@ package Task.ATM;
 import java.util.*;
 public class ATMMachine {
    private final Scanner in = new Scanner(System.in);
-    Bank bank = new Bank();
+    Bank bank = Bank.getInstance();
 
 
     public void start()throws Exception{
