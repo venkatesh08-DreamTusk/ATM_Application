@@ -32,7 +32,14 @@ public class ATMMachine {
 
         switch (userRequest){
             case 1:
-                withdraw(cardNumber);
+                System.out.println("Enter Your Secret PIN ");
+                String cardPIN = in.next();
+                withdraw(cardNumber,cardPIN);
+                if(bank.verify(cardNumber,cardPIN)){
+                    if(transaction != null){
+                        bank.addTransaction(cardNumber,cardPIN,transaction);
+                    }
+                }
                 break;
             case 2:
                 System.out.println("Enter Your PIN");
@@ -41,13 +48,19 @@ public class ATMMachine {
                 break;
             case 3:
                 System.out.println("Enter Your PIN");
-                String cardPIN = in.next();
-                if(bank.verify(cardNumber,cardPIN)){
-                    if(transaction != null){
-                       bank.addTransaction(cardNumber,cardPIN,transaction);
+                String cPIN = in.next();
+                ArrayList<Transaction> transactions = bank.transactionList(cardNumber, cPIN);
+                if (transactions != null) {
+                    System.out.println("Transaction History:");
+                    for (Transaction transaction : transactions) {
+                        System.out.println(transaction);
+                        break;
                     }
+                } else {
+                    System.out.println(" No transactions.");
                 }
                 break;
+
             default:
                 System.out.println("Give Correct Option...");
 
@@ -57,11 +70,10 @@ public class ATMMachine {
 
     Date date = null;
     Transaction transaction = null;
-    public void withdraw(String cardNumber) throws Exception{
+
+    public void withdraw(String cardNumber, String pin) throws Exception{
         System.out.println("Enter Amount ");
         double amount = in.nextDouble();
-        System.out.println("Enter Your Secret PIN ");
-        String pin = in.next();
         if(!bank.verify(cardNumber,pin)){
             System.out.println("Something Wrong Enter Correct PIN ");
             askservice(cardNumber);
@@ -78,6 +90,7 @@ public class ATMMachine {
       System.out.println("Balance in Your Account :-  "+balanceAmount);
       date = new Date();
     transaction = new Transaction(date,"Withdraw",amount,balanceAmount);
+
        askservice(cardNumber);
     }
 

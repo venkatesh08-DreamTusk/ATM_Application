@@ -9,6 +9,8 @@ public class Transaction {
   private double amount;
   private double balance;
 
+  Transaction(){}
+
   public Date getDate(){
       return date;
   }

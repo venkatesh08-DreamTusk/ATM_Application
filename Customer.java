@@ -9,6 +9,7 @@ public class Customer {
       Account account;
      ArrayList<Card> customerCards;
 
+     Customer(){}
 
      Customer(String id ,String name, Account account){
          this.id = id;

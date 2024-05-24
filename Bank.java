@@ -83,7 +83,7 @@ public class Bank {
                     account.withdraw(amount);
                     return account.getAmount();
                 } else {
-                    throw new Exception("Balance Unavailable");
+                   System.out.println("Balance Unavailable");
                 }
             }
         }
@@ -125,11 +125,26 @@ public class Bank {
             for (Card card : customer.getCustomerCards()) {
                 if (cardNumber.equals(card.getCardNumber()) && pin.equals(card.getCardPIN())) {
                     customer.getAccount().addTransaction(transaction);
-                    System.out.println(transaction);
                     return;
                 }
             }
         }
+    }
+
+
+    public ArrayList<Transaction> transactionList(String cardNum , String pin){
+
+       ArrayList<Transaction> transactions = null;
+        for (Customer customer : customersList) {
+            for (Card card : customer.getCustomerCards()) {
+                if (cardNum.equals(card.getCardNumber()) && pin.equals(card.getCardPIN())) {
+                    transactions = customer.account.transactions;
+                    return transactions;
+                }
+            }
+        }
+        return transactions;
+
     }
 
 

@@ -8,6 +8,7 @@ public class Account {
     private double amount;
     ArrayList<Transaction> transactions =  new ArrayList<>();
 
+    Account(){}
     Account(String accountNumber,double amount){
 
         this.accountNumber = accountNumber;
@@ -39,6 +40,8 @@ public class Account {
     public void addTransaction(Transaction transaction) {
         transactions.add(transaction);
     }
+
+
 
 
 }
