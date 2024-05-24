@@ -1,12 +1,14 @@
 package Task.ATM;
 
-public class Cards {
+public class Card {
 
     private String cardID;
     private String cardNumber;
     private String cardPIN;
 
-    Cards(String cardID , String number, String pin){
+
+
+    Card(String cardID , String number, String pin){
         this.cardID = cardID;
         this.cardNumber = number;
         this.cardPIN = pin;

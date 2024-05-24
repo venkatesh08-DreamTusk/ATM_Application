@@ -3,6 +3,13 @@ import java.util.*;
 public class ATMMachine {
    private final Scanner in = new Scanner(System.in);
     Bank bank = Bank.getInstance();
+   Customer customer;
+
+   ATMMachine(){
+       this.customer = new Customer();
+
+
+   }
 
 
     public void start()throws Exception{
@@ -31,15 +38,17 @@ public class ATMMachine {
                 withdraw(cardNumber);
                 break;
             case 2:
-                bank.checkBalance(cardNumber);
+                System.out.println("Enter Your PIN");
+                String pin = in.next();
+                bank.checkBalance(cardNumber,pin);
                 break;
             case 3:
-                if(bank.account.transactionList() != null){
-                    for(Transaction transaction : bank.account.transactions){
-                        System.out.println(transaction);
+                System.out.println("Enter Your PIN");
+                String cardPIN = in.next();
+                if(bank.verify(cardNumber,cardPIN)){
+                    if(transaction != null){
+                       bank.addTransaction(cardNumber,cardPIN,transaction);
                     }
-                }else {
-                    System.out.println("Transaction Not Proceed");
                 }
                 break;
             default:
@@ -49,6 +58,8 @@ public class ATMMachine {
         askservice(cardNumber);
     }
 
+    Date date = null;
+    Transaction transaction = null;
     public void withdraw(String cardNumber) throws Exception{
         System.out.println("Enter Amount ");
         double amount = in.nextDouble();
@@ -68,10 +79,10 @@ public class ATMMachine {
        System.out.println("Withdraw Success");
         double balanceAmount = bank.withdrawSuccessFull(cardNumber,amount);
       System.out.println("Balance in Your Account :-  "+balanceAmount);
-      Date date = new Date();
-       Transaction transaction = new Transaction(date,"Withdraw",amount,balanceAmount);
-      bank.account.addTransactions(transaction);
-
+      date = new Date();
+    transaction = new Transaction(date,"Withdraw",amount,balanceAmount);
        askservice(cardNumber);
     }
+
+
 }

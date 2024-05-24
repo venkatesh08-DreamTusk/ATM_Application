@@ -6,8 +6,10 @@ public class Customer {
 
      private String id;
      private String name;
-     private Account account;
-     private ArrayList<Cards> customerCards;
+      Account account;
+     ArrayList<Card> customerCards;
+
+     Customer(){}
 
 
      Customer(String id ,String name, Account account){
@@ -17,7 +19,7 @@ public class Customer {
          this.customerCards = new ArrayList<>();
      }
 
-     public  ArrayList<Cards> getCustomerCards(){
+     public  ArrayList<Card> getCustomerCards(){
          return  customerCards;
      }
      public String getId(){
@@ -33,8 +35,8 @@ public class Customer {
      }
 
 
-     public  void addCards(Cards cards){
-         customerCards.add(cards);
+     public  void addCards(Card card){
+         customerCards.add(card);
      }
 
      public  Account getAccount(){
