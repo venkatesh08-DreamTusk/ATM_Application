@@ -3,7 +3,6 @@ package Task.ATM;
 import java.util.*;
 
 public class Bank {
-    Scanner in = new Scanner(System.in);
 
     ArrayList<Customer> customersList = new ArrayList<>();
     ArrayList<Account> account;

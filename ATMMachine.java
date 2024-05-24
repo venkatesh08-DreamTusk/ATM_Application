@@ -3,12 +3,9 @@ import java.util.*;
 public class ATMMachine {
    private final Scanner in = new Scanner(System.in);
     Bank bank = Bank.getInstance();
-   Customer customer;
+
 
    ATMMachine(){
-       this.customer = new Customer();
-
-
    }
 
 

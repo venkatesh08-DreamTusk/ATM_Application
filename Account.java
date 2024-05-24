@@ -40,7 +40,5 @@ public class Account {
         transactions.add(transaction);
     }
 
-    public  void viewTransaction(){
 
-    }
 }
