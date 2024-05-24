@@ -26,6 +26,7 @@ public class ATMMachine {
         System.out.println("Cash Withdraw            ---> press '1' ");
         System.out.println("Check Balance            ---> press '2' ");
         System.out.println("View Transaction Details ---> press '3' ");
+        System.out.println("Log Out                  ---> press '4' ");
         System.out.println("-----------------------------------------------------------------------------------");
 
         int userRequest = in.nextInt();
@@ -53,6 +54,9 @@ public class ATMMachine {
                 } else {
                     System.out.println(" No transactions.");
                 }
+                break;
+            case 4:
+                start();
                 break;
 
             default:

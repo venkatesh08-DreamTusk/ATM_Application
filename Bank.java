@@ -133,17 +133,14 @@ public class Bank {
 
 
     public ArrayList<Transaction> transactionList(String cardNum , String pin){
-
-       ArrayList<Transaction> transactions = null;
         for (Customer customer : customersList) {
             for (Card card : customer.getCustomerCards()) {
                 if (cardNum.equals(card.getCardNumber()) && pin.equals(card.getCardPIN())) {
-                    transactions = customer.account.transactions;
-                    break;
+                    return customer.account.transactions;
                 }
             }
         }
-        return transactions;
+        return null;
 
     }
 
