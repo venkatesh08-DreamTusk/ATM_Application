@@ -139,7 +139,7 @@ public class Bank {
             for (Card card : customer.getCustomerCards()) {
                 if (cardNum.equals(card.getCardNumber()) && pin.equals(card.getCardPIN())) {
                     transactions = customer.account.transactions;
-                    return transactions;
+                    break;
                 }
             }
         }

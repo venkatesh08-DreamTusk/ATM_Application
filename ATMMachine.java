@@ -35,11 +35,6 @@ public class ATMMachine {
                 System.out.println("Enter Your Secret PIN ");
                 String cardPIN = in.next();
                 withdraw(cardNumber,cardPIN);
-                if(bank.verify(cardNumber,cardPIN)){
-                    if(transaction != null){
-                        bank.addTransaction(cardNumber,cardPIN,transaction);
-                    }
-                }
                 break;
             case 2:
                 System.out.println("Enter Your PIN");
@@ -54,7 +49,6 @@ public class ATMMachine {
                     System.out.println("Transaction History:");
                     for (Transaction transaction : transactions) {
                         System.out.println(transaction);
-                        break;
                     }
                 } else {
                     System.out.println(" No transactions.");
@@ -90,8 +84,9 @@ public class ATMMachine {
       System.out.println("Balance in Your Account :-  "+balanceAmount);
       date = new Date();
     transaction = new Transaction(date,"Withdraw",amount,balanceAmount);
+        bank.addTransaction(cardNumber, pin, transaction);
 
-       askservice(cardNumber);
+        askservice(cardNumber);
     }
 
 
