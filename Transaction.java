@@ -22,6 +22,18 @@ public class Transaction {
       return balance;
   }
 
+  public  void setDate(Date date){
+      this.date =date;
+  }
+  public void setType (String type){
+      this.type = type;
+  }
+  public  void setAmount(double amount){
+      this.amount =amount;
+  }
+  public  void setBalance(double balance){
+      this.balance =balance;
+  }
 
     Transaction(Date date,String type, double amount,double balance){
         this.date = date;

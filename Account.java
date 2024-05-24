@@ -4,10 +4,21 @@ import java.util.ArrayList;
 
 public class Account {
 
+    private static  Account account;
+    private Account(){
+
+    }
+    public  static  Account getInstance(){
+        if(account == null){
+            account = new Account();
+        }
+        return account;
+    }
+
 
     private String accountNumber;
     private double amount;
-    private ArrayList<Transaction> transactions;
+     ArrayList<Transaction> transactions = new ArrayList<>();
 
     Account(String accountNumber,double amount){
 
@@ -40,10 +51,12 @@ public class Account {
         transactions.add(transaction);
     }
 
-    public void transactionList(){
+    public Transaction transactionList(){
+        Transaction t = null;
         for(Transaction transaction:  transactions){
-            System.out.println(transaction);
+             t = transaction;
         }
+        return t;
     }
 
 

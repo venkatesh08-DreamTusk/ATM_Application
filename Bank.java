@@ -6,7 +6,7 @@ public class Bank {
     Scanner in = new Scanner(System.in);
     ArrayList<Customer> customersList = new ArrayList<>();
     Cards cards;
-    Account account;
+    Account account = Account.getInstance() ;
 
     Bank(){
         customerDetails();
