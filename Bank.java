@@ -91,32 +91,16 @@ public class Bank {
         throw  new Exception("Card Not Found");
     }
 
-    public void checkBalance(String cardNumber,String pin) {
-        String userName = "";
-        String accNo = "";
-        double balance = 0;
+    public Customer checkBalance(String cardNumber,String pin) {
 
         for (Customer customer : customersList) {
                 for (Card card : customer.getCustomerCards()) {
                     if (cardNumber.equals(card.getCardNumber()) && pin.equals(card.getCardPIN())) {
-                        userName = customer.getName();
-                        accNo = customer.getAccount().getAccountNumber();
-                        balance = customer.getAccount().getAmount();
-                        break;
+                        return customer;
                     }
                 }
             }
-
-
-        if (!userName.isEmpty() && !accNo.isEmpty() && balance != 0.0) {
-            System.out.println("---------------------------------------------");
-            System.out.println("Customer Name: " + userName );
-            System.out.println("Account Number: " + accNo);
-            System.out.println("Available Balance: " + balance);
-            System.out.println("---------------------------------------------");
-        } else {
-            System.out.println("Invalid card number, ID, or PIN.");
-        }
+        return null;
     }
 
 

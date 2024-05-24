@@ -40,7 +40,16 @@ public class ATMMachine {
             case 2:
                 System.out.println("Enter Your PIN");
                 String pin = in.next();
-                bank.checkBalance(cardNumber,pin);
+                Customer customer = bank.checkBalance(cardNumber,pin);
+                if(customer != null){
+                    System.out.println("---------------------------------------------");
+            System.out.println("Customer Name: " + customer.getName() );
+            System.out.println("Account Number: " + customer.getAccount().getAccountNumber());
+            System.out.println("Available Balance: " + customer.getAccount().getAmount());
+            System.out.println("---------------------------------------------");
+                }else {
+                    System.out.println("Invalid card number, ID, or PIN.");
+                }
                 break;
             case 3:
                 System.out.println("Enter Your PIN");
